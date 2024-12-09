@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  // array practice
+  let bikes = [
+    "BMW",
+    "yamaha",
+    "suzuki",
+    "ducati",
+    "kawasaki",
+    "honda",
+    "yadea",
+    "bajaj",
+  ];
+  //   console.log(bikes);
+
+  let a = bikes.slice(1, 5);
+  console.log(a);
+
+  bikes.splice(1, 2, "tvs", "hero");
+  console.log(bikes);
+
+  let b = bikes.indexOf("bajaj");
+  console.log(b);
+
+  let c = bikes.includes("honda");
+  console.log(c);
+
+  let d = bikes.join(",");
+  console.log(d);
+
+  // let aa = ["honda", "tvs", "kawasaki", "jupiter"];
+  // let bb = ["activa", "bmw", "audi", "rolex"];
+  // let cc = aa.concat(bb);
+
+  // aa.spice(0, 2);
+  // console.log(aa);
+
+  //
+  let students = [
+    { name: "Alice", grade: 85 },
+    { name: "bob", grade: 75 },
+    { name: "Charlie", grade: 70 },
+    { name: "david", grade: 80 },
+    { name: "alex", grade: 60 },
+  ];
+  let minGrade = 70;
+
+  let a1 = students.map((student) => {
+    return student.grade > minGrade;
+  });
+  console.log(a1);
+  //
+
+  //
+  const emploees = [
+    { name: "alex", monthlysalary: 10000, position: "developer" },
+    { name: "smith", monthlysalary: 20000, position: "backend" },
+    { name: "joy", monthlysalary: 7000, position: "designer" },
+    { name: "amelia", monthlysalary: 15000, position: "fullstack-developer" },
+    { name: "bob", monthlysalary: 80000, position: "hacker" },
+  ];
+
+  emploees.map((yearly) => {
+    document.write(
+      yearly.name +
+        "Annual Salary is " +
+        yearly.monthlysalary * 12 +
+        " and Position is " +
+        yearly.position +
+        "<br>"
+    );
+  });
+</script>

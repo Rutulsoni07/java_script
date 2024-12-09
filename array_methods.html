@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>array_methods</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  // array method
+
+  let arr = ["mango", "apple", "banana"];
+
+  // push -add the values at the last
+  // arr.push("orange");
+  // console.log(arr);
+
+  // pop - delete the value from the last
+  // arr.pop();
+  // console.log(arr);/
+
+  // shift - remove the value form the start
+  // arr.shift();
+  // console.log(arr);
+
+  // unshift - add the value from the starting
+  // arr.unshift("kiwi");
+  // console.log(arr);
+
+  // splice - add or remove values in between strings
+
+  let colors = [
+    "black",
+    "white",
+    "pink",
+    "blue",
+    "red",
+    "green",
+    "yellow",
+    "grey",
+    "skyblue",
+  ];
+  colors.splice(0, 2, "lightgreen", "orange", "purple");
+  console.log(colors);
+  //   (index value, datas, add any values)
+
+  // slice- to print particular values from one point to another
+  let a = colors.slice(4, 7); //(add extra index if you print 6 index)
+  console.log(a);
+
+  //   indexOf- to find particular index
+  let b = colors.indexOf("white");
+  console.log(b);
+
+  //   sort- a to z
+  colors.sort();
+  console.log(colors);
+
+  //   reverse - z to a
+  colors.reverse();
+  console.log(colors);
+
+  //   concat - merge two arrays
+  let aa = [1, 2, 3, 4];
+  let bb = [5, 6, 7, 8];
+  let cc = bb.concat(aa);
+  console.log(cc);
+
+  //   includes - to find the values is there or not then it will be print in true or false
+  let dd = colors.includes("blue");
+  console.log(dd);
+
+  //   join
+  let e = colors.join(",");
+  console.log(e);
+</script>

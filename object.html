@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  // this is obj of array
+
+  let arr = ["Rutul", 24, 38001, "student"];
+  // object
+  let obj = {
+    // key : value
+    name: "Rutul",
+    age: 24,
+    pincode: 38001,
+    occupation: "student",
+    hobbies: ["cricket", "reading", "gardening"],
+  };
+  console.log(obj);
+  //   obj print all data if applying variables like (obj)
+
+  console.log(obj.name);
+  //   to print single value apply key word after obj.
+
+  console.log(obj.hobbies[0]);
+  //   ṭo print array's index in obj.. just apply variable name[index number]
+
+  //   another way to print in web
+  //   document.write("My name is" + obj.name + "<br>");
+  //   document.write(`My age is ${obj.age} <br>`);
+  //   document.write(obj.name + "<br>");
+  // next
+
+  // array of obj
+
+  let array = [
+    { movie: "don", year: 2008 },
+    { movie: "don 2", year: 2010 },
+    { movie: "don 3", year: 2015 },
+    { movie: "don 4", year: 2020 },
+  ];
+
+  // document.write(array[1].movie);
+
+  console.log(array[1].movie);
+  console.log(array[2].year);
+</script>

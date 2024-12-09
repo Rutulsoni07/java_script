@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>string_methods</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  //to convert into string
+  let a = 1111;
+  console.log(typeof a);
+  // type of is describe the datatype is in string or numbers or any types
+  let b = a.toString();
+  console.log(typeof b);
+  //   console.log(typeof a.tostring());
+
+  //   trim, trimStart, trimEnd
+  //   trim for remove space before and after the sentences
+  // trimStart- remove spaces from start
+  // trimEnd- remove spaces from end
+  let data = "      Hello Universe    ";
+  console.log(data.trim());
+
+  // toLowerCase
+  let name = "RUTUL";
+  console.log(name.toLowerCase());
+
+  //   toUpperCase
+  let name1 = "rutul";
+  console.log(name1.toUpperCase());
+
+  //   replace - replace any word in string
+  let c = "Hello Rutul";
+  console.log(c.replace("Rutul", "Universe"));
+
+  //   split -
+  //   to count how many strings
+  let d = "Hello World";
+  let e = d.split("", 11);
+  console.log(e);
+</script>

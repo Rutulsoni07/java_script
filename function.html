@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button onclick="test()">click me</button>
+  </body>
+</html>
+<script>
+  // functions - normal function, arrow function
+
+  // syntax:-
+  //   normal function
+  //   function test() {
+  //     console.log("hello world");
+  //   }
+
+  // arrow function
+  const test = () => {
+    console.log("hello world.");
+  };
+
+  // arguments, parameters
+  // take nothing, return nothing:-
+
+  function add(a, b) {
+    document.write("Multiplication of" + a * b);
+  }
+  add(5, 10);
+  // take something, return nothing
+  // take something, return something
+  // take nothing, return something
+  function rect(l, b, h) {
+    document.write("Area of Rectangle" + l * b);
+    document.write("volume of Rectangle" + l * b * h);
+  }
+  rect(10, 10, 10);
+
+  
+  //   CIRCLE
+  function circle() {
+    const pi = 3.14;
+    let r = 15;
+    console.log("Area of Circle" + pi * r * r);
+  }
+  circle();
+
+  //  FERENHIETE
+  function fer() {
+    let c = 34;
+    console.log("Fernhite is:" + c * 1.8 + 32);
+  }
+  fer();
+
+  // CELCIUS
+  function cel() {
+    let f = 87;
+    console.log("celuise is:" + (f - 32) * 1.8);
+  }
+  cel();
+
+  //  TRIANGLE
+  function tri(b, h) {
+    console.log("triangle size is:" + 0.5 * b * h);
+  }
+  tri(10, 20);
+
+  //   SQUARE
+  function square() {
+    let a = 10;
+    console.log("square is:" + a * a);
+  }
+  square();
+  //  METER INTO FEET
+  function meter() {
+    const feet = 3.28;
+    let m = 50;
+    console.log("meter into feet is:" + feet * m);
+  }
+  meter();
+
+  //   FEET INTO METER
+  function feet() {
+    const feet = 0.304;
+    let m = 20;
+    console.log("feet into meter is:" + feet * m);
+  }
+  feet();
+
+  // DOLLAR TO RUPEE
+  function dollar() {
+    let rupee = 84.71;
+    let USD = 10;
+    console.log("dollar to rupee is:" + rupee * USD);
+  }
+  dollar();
+
+  // RUPEE TO DOLLAR
+  function rupee() {
+    let USD = 10;
+    let rup = 84.71;
+    console.log("rupee to dollar is:" + rup / USD);
+  }
+  rupee();
+
+  // reduce method
+
+  let number = [1, 2, 3, 4, 5];
+
+  // callback function - function is inside of another function -(()=>{})
+  let number1 = number.reduce((a, b) => {
+    return a + b;
+  });
+  console.log(number1);
+
+  // filter
+  let filter1 = [
+    { name: "virat kohli", age: 36, profession: "Cricketer" },
+    { name: "MSDHONI", age: 43, profession: "Cricketer" },
+    { name: "Jasprit Bumrah", age: 29, profession: "Cricketer" },
+  ];
+
+  let cric = filter1.filter((A) => {
+    return filter1;
+  });
+  console.log(cric);
+
+  // foreach, map
+  let cricketer = [
+    "msdhoni",
+    "virat kohli",
+    "bumrah",
+    "jadeja",
+    "raina",
+    "hardik",
+  ];
+
+  cricketer.forEach((value, index) => {
+    document.write(value + "<br>");
+  });
+</script>
