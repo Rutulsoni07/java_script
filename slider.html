@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="slider">
+      <img src="" id="img" width="20%" alt="" />
+      <h4 id="slider-title"></h4>
+      <p id="slider-des"></p>
+      <button id="pre-btn">Previous</button>
+      <button id="next-btn" onclick="nextBtn()">Next</button>
+    </div>
+  </body>
+</html>
+<script>
+  const slides = [
+    {
+      image:
+        "https://i.pinimg.com/736x/28/69/dc/2869dce8fcc1be5bb57fc8409d88dd3e.jpg",
+      title: "MSDHONI",
+      description: "W/K, batter",
+    },
+    {
+      image:
+        "https://i.pinimg.com/736x/05/13/03/05130372edc32dfad6509194e0a67faa.jpg",
+      title: "VIRAT KOHLI",
+      description: "batter",
+    },
+    {
+      image:
+        "https://i.pinimg.com/736x/af/e6/6e/afe66e7dd673697ed7a65b384910c79c.jpg",
+      title: "HARDIK PANDYA",
+      description: "ALL ROUNDER",
+    },
+    {
+      image:
+        "https://i.pinimg.com/736x/73/0b/5c/730b5c465568a3f74cae36b4d173aac7.jpg",
+      title: "RAVINDRA JADEJA",
+      description: "ALL-ROUNDER",
+    },
+  ];
+
+  let currentIndex = 0;
+
+  const showSlide = () => {
+    const slide = slides[currentIndex];
+    document.getElementById("img").src = slide.image;
+    document.getElementById("slide-title").innerHTML = slide.title;
+    document.getElementById("slide-des").innerHTML = slide.description;
+  };
+
+  const nextBtn = () => {
+    currentIndex++;
+    if (currentIndex >= slides.length) {
+      currentIndex = 0;
+    }
+    showSlide();
+  };
+
+  document.getElementById("pre-btn").addEventListener("click", () => {
+    currentIndex--;
+    if (currentIndex < 0) {
+      currentIndex = slides.length - 1;
+    }
+    showSlide();
+  });
+  showSlide();
+</script>

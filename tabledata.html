@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>tabledata</title>
+    <style></style>
+  </head>
+  <body>
+    <table border="1" width="70%">
+      <thead>
+        <tr>
+          <th>Sr no.</th>
+          <th>Name</th>
+          <th>Age</th>
+          <th>City</th>
+        </tr>
+      </thead>
+      <tbody id="tabledata"></tbody>
+    </table>
+  </body>
+</html>
+<script>
+  let arr = [
+    { name: "Isaac", age: "35", city: "New York" },
+    { name: "David", age: "54", city: "Dallas" },
+    { name: "Goggins", age: "24", city: "San Diego" },
+    { name: "Charlie", age: "30", city: "New York City" },
+    { name: "Jack", age: "21", city: "Austin" },
+    { name: "Joe", age: "17", city: "San Diego" },
+    { name: "Eve", age: "31", city: "Dallas" },
+    { name: "Frank", age: "25", city: "Phoenix" },
+    { name: "Hannah", age: "31", city: "Houston" },
+    { name: "Smith", age: "35", city: "Maimi" },
+  ];
+
+  let tr = "";
+
+  arr.map((ele, i) => {
+    tr += `<tr>
+        <td>${i + 1}</td>
+        <td>${ele.name}</td>
+        <td>${ele.age}</td>
+        <td>${ele.city}</td>
+        </tr>`;
+  });
+  document.getElementById("tabledata").innerHTML = tr;
+</script>
