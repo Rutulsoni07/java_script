@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    body {
+      margin-top: 150px;
+      margin-left: 50px;
+      background-color: lightgray;
+    }
+    header {
+      font-size: 3rem;
+      margin-left: 600px;
+    }
+    #timer {
+      font-size: 3rem;
+      margin-left: 600px;
+      padding: 1rem;
+    }
+    .buttons {
+      margin-left: 550px;
+      font-size: 2rem;
+      gap: 20px;
+      display: flex;
+    }
+    #start {
+      background-color: lightgreen;
+      font-size: 2rem;
+      cursor: pointer;
+    }
+
+    #start:hover {
+      background-color: rgb(42, 202, 42);
+    }
+    #stop {
+      cursor: pointer;
+      font-size: 2rem;
+      background-color: rgba(255, 0, 0, 0.7);
+    }
+    #stop:hover {
+      background-color: rgb(216, 52, 52);
+    }
+    #reset {
+      cursor: pointer;
+      font-size: 2rem;
+      background-color: lightblue;
+    }
+    #reset:hover {
+      background-color: rgb(90, 195, 230);
+    }
+  </style>
+  <body>
+    <header>Stopwatch</header>
+    <div id="timer">00:00:00</div>
+    <div class="buttons">
+      <button id="start">Start</button>
+      <button id="stop">Stop</button>
+      <button id="reset">Reset</button>
+    </div>
+  </body>
+</html>
+<script>
+  let timer = 0;
+  let seconds = 0;
+  let minutes = 0;
+  let hour = 0;
+
+  const updateDisplay = () => {
+    document.getElementById("timer").innerHTML = `${hour
+      .toString()
+      .padStart(2, "0")}:${minutes.toString().padStart(2, "0")}
+    :${seconds.toString().padStart(2, "0")}`;
+  };
+
+  //  start stopwatch
+  document.getElementById("start").addEventListener("click", () => {
+    if (timer === 0) {
+      timer = setInterval(() => {
+        seconds++;
+        if (seconds === 60) {
+          seconds = 0;
+          minutes++;
+        }
+        if (minutes === 60) {
+          minutes = 0;
+          hour++;
+        }
+        updateDisplay();
+      }, 1000);
+    }
+  });
+
+  //  stop
+  document.getElementById("stop").addEventListener("click", () => {
+    clearInterval(timer);
+    timer = 0;
+  });
+
+  //reset
+  document.getElementById("reset").addEventListener("click", () => {
+    clearInterval(timer);
+    timer = 0;
+    seconds = 0;
+    minutes = 0;
+    hour = 0;
+    updateDisplay();
+  });
+  updateDisplay();
+</script>
