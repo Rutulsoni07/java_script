@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form onsubmit="formSubmit(event)" id="form">
+      <input type="text" placeholder="Enter Name" id="name" />
+      <br /><br />
+      <input type="email" placeholder="Enter Email" id="email" />
+      <br /><br />
+      <input type="password" placeholder="Enter password" id="password" />
+      <br /><br />
+      <button>Submit</button>
+    </form>
+    <br /><br />
+    <h3>Name: <span id="nameText"></span></h3>
+    <h3>Email: <span id="emailText"></span></h3>
+    <h3>Password: <span id="passText"></span></h3>
+  </body>
+</html>
+<script>
+  const formSubmit = (event) => {
+    event.preventDefault(); //not reload the page
+
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
+
+    console.log("Name:" + name);
+    console.log("Email:" + email);
+    console.log("Password:" + password);
+
+    // after doing this it will reflect in console with all data
+
+    //
+    // showing in web:-
+    document.getElementById("nameText").innerHTML = name;
+    document.getElementById("emailText").innerHTML = email;
+    document.getElementById("passText").innerHTML = password;
+
+    let arr = [{ name: name, password: password, email: email }];
+    console.log(arr);
+
+    event.target.reset(); // to reset the data in the form
+  };
+</script>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>fakestoreapi</title>
+  </head>
+  <style>
+    .product {
+      /* display: flex;
+      flex-direction: column;
+      align-items: center; */
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 16px;
+      margin: 16px;
+      width: 300px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    #card {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+    }
+    img {
+      border-radius: 8px;
+    }
+  </style>
+  <body>
+    <div id="card"></div>
+    <script>
+      fetch("https://fakestoreapi.com/products")
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+
+          data.forEach((ele) => {
+            let card = document.getElementById("card");
+            let div = document.createElement("div");
+            div.className = "product";
+
+            let img = document.createElement("img");
+            img.src = ele.image;
+            img.alt = ele.title;
+            img.style.width = "250px";
+
+            let title = document.createElement("h3");
+            title.innerHTML = ele.title;
+
+            let desc = document.createElement("p");
+            desc.innerHTML = ele.description;
+
+            let cate = document.createElement("p");
+            cate.innerHTML = `<strong>Category:</strong> ${ele.category}`;
+
+            let price = document.createElement("p");
+            price.innerHTML = `<strong>Price:</strong> $${ele.price}`;
+
+            let rating = document.createElement("p");
+            rating.innerHTML = `<strong>Rating:</strong> ${ele.rating.rate}`;
+
+            let btn = document.createElement("button");
+            btn.innerHTML = `<b>Add to Cart</b>`;
+            btn.style.padding = "10px 20px";
+            btn.style.backgroundColor = "#ffffff";
+            btn.style.fontFamily = "Roboto";
+            btn.style.color = "#003b5c";
+            btn.style.fontSize = "#15.4px";
+            btn.style.border = "1px solid lightblack";
+            btn.style.cursor = "pointer";
+            btn.style.borderRadius = "7px";
+
+            div.appendChild(img);
+            div.appendChild(title);
+            div.appendChild(desc);
+            div.appendChild(cate);
+            div.appendChild(price);
+            div.appendChild(rating);
+            div.appendChild(btn);
+            card.appendChild(div);
+          });
+        })
+        .catch((err) => console.log(err));
+    </script>
+  </body>
+</html>

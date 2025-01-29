@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CART</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:wght@300&display=swap");
+
+    * {
+      list-style: none;
+      font-family: "Poppins", serif;
+      text-decoration: none;
+      box-sizing: border-box;
+      text-transform: none;
+      color: #000000;
+    }
+    body {
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #ccc;
+    }
+    .links {
+      display: flex;
+      /* justify-content: center; */
+      /* align-items: center; */
+      gap: 50px;
+      cursor: pointer;
+    }
+    .links a {
+      padding: 5px 10px;
+      border-radius: 10px;
+    }
+    .links a:hover {
+      background-color: #58a9ff;
+      transform: scale(1.15);
+      transition: all 0.4s;
+    }
+
+    h1 {
+      text-align: center;
+      margin: 20px 0;
+    }
+    #container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 50px;
+      padding: 20px;
+      cursor: pointer;
+    }
+
+    .product {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 15px;
+      text-align: center;
+      width: 200px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s;
+    }
+
+    .product img {
+      border-radius: 8px;
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    .product button {
+      margin-top: 10px;
+      padding: 8px 12px;
+      background-color: rgba(0, 0, 255, 0.774);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .product:hover {
+      transform: scale(1.05);
+    }
+    .product button:hover {
+      background-color: #0056b3;
+    }
+    /*  */
+    .cart {
+      position: relative;
+      margin-bottom: 50px;
+    }
+    .cart p {
+      position: absolute;
+      margin-left: 400px;
+    }
+    .cart p i {
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+  </style>
+  <body>
+    <nav>
+      <div class="links">
+        <a href="">Home</a>
+        <a href="">About</a>
+        <a href="">Services</a>
+        <a href="">Blog</a>
+        <a href="">Products</a>
+      </div>
+      <div class="cart">
+        <p><i class="fa-solid fa-cart-shopping"></i></p>
+      </div>
+    </nav>
+    <h1>Products</h1>
+    <div id="container"></div>
+
+    <div id="products">
+      <ul id="product_items"></ul>
+      <p>Total Price: <span id="total"></span></p>
+    </div>
+  </body>
+</html>
+<script>
+  let cartItem = [];
+  let total_pri = 0;
+  let productLists = document.getElementById("container");
+
+  let productItems = [
+    { name: "pasta", price: 9.99, image: "pasta.jpg" },
+    { name: "Pizza", price: 15.99, image: "pizza.jpg" },
+    { name: "Coffee", price: 7.99, image: "coffee.jpg" },
+    { name: "Salad", price: 13, image: "salad1.jpg" },
+    { name: "Cheesecake", price: 17.99, image: "cheesecake1.jpg" },
+    { name: "IceCream", price: 10.99, image: "strawberry.jpg" },
+  ];
+
+  productItems.map((ele, ind) => {
+    let productDiv = document.createElement("div");
+    productDiv.classList.add("product");
+    productDiv.innerHTML = `
+       <img src = "${ele.image}" alt = "${ele.name}" width = "150px"/>
+       <p>${ele.name}</p>
+       <p>$ ${ele.price}</p>
+       <button class="Cart">Add to Cart</button>`;
+    productLists.appendChild(productDiv);
+
+    //
+    let AddtoCart = document.querySelectorAll(".Cart");
+    AddtoCart[ind].addEventListener("click", () => {
+      cartItem.push({
+        name: ele.name,
+        price: ele.price,
+        image: ele.image,
+      });
+      total_pri += ele.price;
+      updateCart();
+    });
+  });
+  //  //
+  const updateCart = () => {
+    let products = document.getElementById("products");
+    let totalPrice = document.getElementById("total");
+
+    // products.innerHTML = "";
+    cartItem.forEach((ele, ind) => {
+      let li = document.createElement("li");
+      let img = document.createElement("img");
+      img.src = ele.image;
+      img.alt = ele.name;
+      img.style.width = "150px";
+      li.appendChild(img);
+
+      let text = document.createElement("span");
+      text.innerHTML = `<br></br> Product Name: ${ele.name} <br></br> Product Price :$ ${ele.price}`;
+      li.appendChild(text);
+
+      products.appendChild(li);
+    });
+    totalPrice.innerHTML = total_pri.toFixed(2);
+  };
+  updateCart();
+</script>

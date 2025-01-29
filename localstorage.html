@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form id="user">
+      <input type="text" placeholder="Enter name" id="name" required />
+      <br /><br />
+      <input
+        type="password"
+        placeholder="Enter password"
+        id="password"
+        required
+      />
+      <br /><br />
+      <button type="submit" id="submit_btn">submit</button>
+    </form>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Sr no</th>
+          <th>Name</th>
+          <th>Password</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="tableData"></tbody>
+    </table>
+  </body>
+</html>
+<script>
+  // CRUD OPERATION- CREATE READ UPDATE DELETE
+  let currentindex = null;
+  document.getElementById("user").addEventListener("submit", (event) => {
+    event.preventDefault(); // for not refreshing page
+    let name = document.getElementById("name").value;
+    let password = document.getElementById("password").value;
+
+    //store multiple values in objects using only one key
+    let obj = {
+      n: name,
+      p: password,
+    };
+
+    // to getitem just cuz of first time user fill the form then conditions will pass if data is there before the submiting form or not
+    //if data is not store before then first user data will store in black array
+
+    let arr = JSON.parse(localStorage.getItem("data")) || [];
+
+    // if condition is applying when we changing in the edit button
+    //if we click in edit button then if conditions is applied or goes with else
+
+    if (currentindex !== null) {
+      arr[currentindex] = { n: name, p: password };
+      currentindex = null;
+    } else {
+      arr.push(obj); // obj values store in array
+    }
+
+    localStorage.setItem("data", JSON.stringify(arr));
+    updateTable();
+    event.target.reset(); // for data will  wipped out
+  });
+
+  let a = JSON.parse(localStorage.getItem("data"));
+  console.log(a);
+  //
+  //
+  const updateTable = () => {
+    let data = JSON.parse(localStorage.getItem("data")) || [];
+    // targeting tbody for table:-
+    let dataTable = document.getElementById("tableData");
+    let tr = "";
+    data.map((ele, index) => {
+      tr += ` 
+    <tr>
+      <td>${index + 1}</td>
+      <td>${ele.n}</td>
+      <td>${ele.p}</td>
+      <td onclick="handleEdit(${index})"><button>edit</button><button onclick="handleDelete(${index})">Delete</button></td>
+    </tr> `;
+    });
+    dataTable.innerHTML = tr;
+  };
+  updateTable();
+
+  //delete row:-
+  const handleDelete = (index) => {
+    alert("are you sure?");
+
+    let updateData = JSON.parse(localStorage.getItem("data"));
+    updateData.splice(index, 1);
+    localStorage.setItem("data", JSON.stringify(updateData));
+    updateTable();
+  };
+
+  // // filter method to delete/:
+  // const handleDelete = ()=>{
+  //   let updateData = JSON.parse(localStorage.getItem("data"))
+  //   let newitem = updateData.filter((ele, i)=> index !== i)
+  //   localStorage.setItem("data", JSON.stringify(newitem))
+  //   updateTable()
+  // }
+
+  // edit-
+  const handleEdit = (index) => {
+    let updateData = JSON.parse(localStorage.getItem("data"));
+    document.getElementById("name").value = updateData[index].n;
+    document.getElementById("password").value = updateData[index].p;
+    currentindex = index;
+    document.getElementById("submit_btn").innerHTML = "Update";
+  };
+  updateTable();
+</script>

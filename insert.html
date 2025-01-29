@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #box {
+        background-color: brown;
+        border: 1px solid black;
+        width: 20%;
+        margin: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box">
+      <p>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi,
+        culpa.
+      </p>
+    </div>
+  </body>
+</html>
+<script>
+  // apppend child - add last child, insertbefore (element, target parent child)
+  let h1 = document.createElement("h1");
+  h1.innerHTML = "heading";
+
+  // insertbefore - before the element
+  let box = document.getElementById("box");
+  box.insertBefore(h1, box.children[0]);
+
+  //
+  // insertAdjacentElement - create element,
+  // insertAdjacentHTML - dont have to create element,
+  // insertAdjacentText -Create text
+  // position - beforebegin, afterbegin, beforeend, afterend
+
+  // beforeend:-
+  let i = document.createElement("i");
+  i.innerHTML = "hello";
+
+  let box1 = document.getElementById("box");
+  box.insertAdjacentElement("beforeend", i);
+
+  //beforebegin:-
+
+  let h3 = document.createElement("h3");
+  h3.innerHTML = "im h3 tag";
+
+  let box2 = document.getElementById("box");
+  box.insertAdjacentElement("beforebegin", h3);
+
+  //afterbegin:-
+  let h4 = document.createElement("h4");
+  h4.innerHTML = "im h4 tag";
+
+  let box3 = document.getElementById("box");
+  box.insertAdjacentElement("afterbegin", h4);
+
+  //afterend:-
+  let h5 = document.createElement("h5");
+  h5.innerHTML = "im h5 tag";
+
+  let box4 = document.getElementById("box");
+  box.insertAdjacentElement("afterend", h5);
+</script>

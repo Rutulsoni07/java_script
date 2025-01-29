@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .Hidden {
+      display: none;
+    }
+    .Show {
+      display: block;
+    }
+  </style>
+  <body id="body"></body>
+</html>
+<script>
+  let table = document.createElement("table");
+  document.getElementById("body").appendChild(table);
+  table.style.width = "70%";
+  //   table.style.border = "1px solid black";
+
+  //   hide button
+  let btn = document.createElement("button");
+  document.getElementById("body").appendChild(btn);
+  btn.style.width = "80px";
+  btn.style.height = "25px";
+  btn.style.marginTop = "20px";
+  btn.style.background = "white";
+  btn.style.color = "black";
+  btn.style.fontSize = "17px";
+  btn.style.cursor = "pointer";
+  btn.innerText = "HIDE";
+  btn.setAttribute("id", "btnHide");
+
+  //   show button
+  let btn2 = document.createElement("button");
+  document.getElementById("body").appendChild(btn2);
+  btn2.style.width = "80px";
+  btn2.style.height = "25px";
+  btn2.style.marginTop = "20px";
+  btn2.style.background = "white";
+  btn2.style.color = "black";
+  btn2.style.fontSize = "17px";
+  btn2.style.cursor = "pointer";
+  btn2.innerText = "SHOW";
+  btn2.setAttribute("id", "btnShow");
+
+  // eventlistener
+  document.getElementById("btnHide").addEventListener("click", () => {
+    table.setAttribute("class", "Hidden");
+  });
+
+  document.getElementById("btnShow").addEventListener("click", () => {
+    table.setAttribute("class", "Show");
+  });
+
+  //
+  //
+
+  let tr1 = document.createElement("tr");
+  table.appendChild(tr1);
+  table.setAttribute("border", "1");
+  tr1.style.fontSize = "30px";
+  tr1.style.marginLeft = "500px";
+  //
+
+  let td1 = document.createElement("td");
+  let td2 = document.createElement("td");
+  let td3 = document.createElement("td");
+  let td4 = document.createElement("td");
+
+  td1.innerText = "Sr No";
+  td2.innerText = "Name";
+  td3.innerText = "Age";
+  td4.innerText = "Occupation";
+
+  tr1.appendChild(td1);
+  tr1.appendChild(td2);
+  tr1.appendChild(td3);
+  tr1.appendChild(td4);
+  //
+  //   1st row:
+  let tr2 = document.createElement("tr");
+  table.appendChild(tr2);
+
+  let td11 = document.createElement("td");
+  let td12 = document.createElement("td");
+  let td13 = document.createElement("td");
+  let td14 = document.createElement("td");
+
+  td11.innerText = "01";
+  td12.innerText = "Pablo Escobar";
+  td13.innerText = "45";
+  td14.innerText = "Drug lord";
+
+  tr2.appendChild(td11);
+  tr2.appendChild(td12);
+  tr2.appendChild(td13);
+  tr2.appendChild(td14);
+
+  //   2nd row:
+  let tr3 = document.createElement("tr");
+  table.appendChild(tr3);
+
+  let td21 = document.createElement("td");
+  let td22 = document.createElement("td");
+  let td23 = document.createElement("td");
+  let td24 = document.createElement("td");
+
+  td21.innerText = "02";
+  td22.innerText = "Thomas Shelby";
+  td23.innerText = "36";
+  td24.innerText = "Warrior";
+
+  tr3.appendChild(td21);
+  tr3.appendChild(td22);
+  tr3.appendChild(td23);
+  tr3.appendChild(td24);
+  //
+
+  // 3rd row:-
+  let tr4 = document.createElement("tr");
+  table.appendChild(tr4);
+
+  let td31 = document.createElement("td");
+  let td32 = document.createElement("td");
+  let td33 = document.createElement("td");
+  let td34 = document.createElement("td");
+
+  td31.innerText = "03";
+  td32.innerText = "Walter White";
+  td33.innerText = "42";
+  td34.innerText = "Drug Maker";
+
+  tr4.appendChild(td31);
+  tr4.appendChild(td32);
+  tr4.appendChild(td33);
+  tr4.appendChild(td34);
+  //
+
+  // 4th row:
+  let tr5 = document.createElement("tr");
+  table.appendChild(tr5);
+
+  let td41 = document.createElement("td");
+  let td42 = document.createElement("td");
+  let td43 = document.createElement("td");
+  let td44 = document.createElement("td");
+
+  td41.innerText = "04";
+  td42.innerText = "Jesse Pinkman";
+  td43.innerText = "27";
+  td44.innerText = "Drug Maker";
+
+  tr5.appendChild(td41);
+  tr5.appendChild(td42);
+  tr5.appendChild(td43);
+  tr5.appendChild(td44);
+  //
+
+  // 5th row:-
+  let tr6 = document.createElement("tr");
+  table.appendChild(tr6);
+
+  let td51 = document.createElement("td");
+  let td52 = document.createElement("td");
+  let td53 = document.createElement("td");
+  let td54 = document.createElement("td");
+
+  td51.innerText = "05";
+  td52.innerText = "Gus Fring";
+  td53.innerText = "54";
+  td54.innerText = "Drug supplier";
+
+  tr6.appendChild(td51);
+  tr6.appendChild(td52);
+  tr6.appendChild(td53);
+  tr6.appendChild(td54);
+  //
+
+  // 6th row:
+  let tr7 = document.createElement("tr");
+  table.appendChild(tr7);
+
+  let td61 = document.createElement("td");
+  let td62 = document.createElement("td");
+  let td63 = document.createElement("td");
+  let td64 = document.createElement("td");
+
+  td61.innerText = "06";
+  td62.innerText = "Saul Goodman";
+  td63.innerText = "51";
+  td64.innerText = "Lawyer";
+
+  tr7.appendChild(td61);
+  tr7.appendChild(td62);
+  tr7.appendChild(td63);
+  tr7.appendChild(td64);
+  //
+
+  // 7th row:
+  let tr8 = document.createElement("tr");
+  table.appendChild(tr8);
+
+  let td71 = document.createElement("td");
+  let td72 = document.createElement("td");
+  let td73 = document.createElement("td");
+  let td74 = document.createElement("td");
+
+  td71.innerText = "07";
+  td72.innerText = "Hank Schrader";
+  td73.innerText = "53";
+  td74.innerText = "DEA Agent";
+
+  tr8.appendChild(td71);
+  tr8.appendChild(td72);
+  tr8.appendChild(td73);
+  tr8.appendChild(td74);
+  //
+</script>

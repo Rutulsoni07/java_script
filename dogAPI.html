@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      .img {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 100px;
+      }
+      .btn1 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      #btn {
+        padding: 10px 40px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        color: rgb(7, 161, 46);
+        cursor: pointer;
+      }
+
+      .img img {
+        width: 400px;
+        height: 400px;
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="img">
+      <img
+        src="https://cdn.pixabay.com/photo/2023/08/18/15/02/dog-8198719_1280.jpg"
+        alt=""
+        id="dog"
+      />
+    </div>
+    <br /><br />
+    <div class="btn1">
+      <button id="btn">Next</button>
+    </div>
+  </body>
+</html>
+<script>
+  document.getElementById("btn").addEventListener("click", () => {
+    fetch("https://dog.ceo/api/breeds/image/random")
+      .then((res) => res.json())
+      .then((data) => {
+        let img = document.getElementById("dog");
+        img.src = data.message;
+      })
+      .catch((err) => console.log(err));
+  });
+</script>

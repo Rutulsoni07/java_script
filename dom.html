@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="heading">heading</div>
+    <h1>heading 1</h1>
+    <h1>heading 2</h1>
+  </body>
+</html>
+<script>
+  // selecting elements:-
+  // 1) document.getElementsByTagName
+  // example:-
+
+  // let h1 = document.getElementsByTagName("h1");
+  // console.log(h1[1]);
+
+  // 2) document.getElementsByClassName
+  //   example:-
+
+  // let classes = document.getElementsByClassName("para");
+  // console.log(classes[2]);
+
+  // 3) document.getElementID
+  //   example:-
+
+  // let id = document.getElementById("div");
+  // console.log(id);
+
+  // 4) document.querySelector:-
+  // example:
+
+  // let aa = document.querySelector(".para");
+  // console.log(aa);
+
+  // 5) document.querySelectorAll
+  // example:
+
+  // let bb = document.querySelectorAll(".para");
+  // console.log(bb);
+
+  // modifying content:-
+  // 1) inner HTML:
+  // document.getElementById("heading").innerHTML = "<h1>Hi</h1>";
+  // let a = document.getElementById("heading").innerHTML;
+  // console.log(a);
+
+  // 2)innerText:-
+  // document.getElementById("heading").innerText = "<h1>Hi</h1>";
+  // let b = document.getElementById("heading").innerText;
+  // console.log(b);
+
+  // 3)textContent:-
+  // document.getElementById("heading").textContent = "<div>Hi</div>";
+  // let c = document.getElementById("heading").textContent;
+  // console.log(c);
+
+  // changing styles :- CSS
+
+  // heading.style.color = "red";
+  // console.log(heading);
+
+  // adding or removing elements:-
+  // 1)setAttributes:-
+
+  // let para = document.getElementById("para");
+  // 2)RemoveAttributes:-
+
+  // 3)getAttributes:-
+
+  //
+  // /
+  // Targeting methods
+  // document.getElementByTagName
+  // document.getElementByClassName
+  // document.getElementByID
+  // document.querySelector
+  // document.querySelectorAll
+
+  // tranvere methods
+  // document.parentElement - target parent element
+  // document.parentNode - target parent element also target space between element
+  // document.NextSibling -target next sibling element but also space target
+  // document.NextElementSibling  - target sibling element
+  // document.previousSibling - target space between ele element
+  // document.previousElementSibling - target next element
+  // document.children - target children element
+  // document.childnode  - target space between children element
+</script>

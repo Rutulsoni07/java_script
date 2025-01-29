@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body id="body"></body>
+</html>
+<script>
+  // createElement
+  let a = document.createElement("h1");
+  console.log(a);
+
+  //   CreateTextNode
+
+  let b = document.createTextNode("hello");
+  console.log(b);
+
+  // create comment
+
+  let c = document.createComment("this is a comment");
+  console.log(c);
+
+  // append child -  merging elements - it will print in body not in console
+  a.appendChild(b);
+  //
+
+  // print in body
+  document.getElementById("body").appendChild(a);
+
+  //   img print in body
+  let img = document.createElement("img");
+  img.src =
+    "https://img.freepik.com/free-photo/nature-beauty-reflected-tranquil-water-scene-generative-ai_188544-12648.jpg";
+  console.log(img);
+  body.appendChild(img);
+</script>

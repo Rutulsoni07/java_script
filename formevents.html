@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="">
+      <input
+        type="text"
+        id="name"
+        placeholder="Enter name"
+        onfocus="focusFunction(this)"
+        onblur="blurFunction(this)"
+        oninput="inputFunction(this)"
+        onchange="changeFunction(this)"
+      />
+
+      <br /><br />
+
+      <input
+        type="text"
+        id="city"
+        placeholder="Enter city"
+        onfocus="focusFunction(this)"
+        onblur="blurFunction(this)"
+        oninput="inputFunction(this)"
+        onchange="changeFunction(this)"
+      />
+
+      <br /><br />
+      <select
+        name=""
+        id=""
+        onfocus="focusFunction(this)"
+        onblur="blurFunction(this)"
+        oninput="inputFunction(this)"
+        onchange="changeFunction(this)"
+      >
+        <option value="">select</option>
+        <option value="India">India</option>
+        <option value="USA">USA</option>
+        <option value="UK">UK</option>
+        <option value="New Zeland">New zeland</option>
+      </select>
+    </form>
+    <br /><br /><br /><br />
+
+    <div id="text" style="border: 1px solid black"></div>
+  </body>
+</html>
+<script>
+  // onfocus- if u apply css like color and bg-c in form and click outside the color u change stayed as it is
+  //  onblur- if u click outside of form it will change it all color
+  //  oninput- if u enter the value in form and tag the id it will reflect there change
+  //  onchange- if u enter anything in form and click outside then u change the value
+
+  // const focusFunction = (element) => {
+  //   element.style.color = "yellow";
+  //   element.style.backgroundColor = "black";
+  // };
+
+  //   other method:- if u dont apply element in ()
+  //   const focusFunction=()=>{
+  //     document.getElementById("text").style.color="yello"
+  //   }
+  //
+  const blurFunction = (element) => {
+    element.style.backgroundColor = "";
+    element.style.color = "black";
+  };
+
+  //
+  // const inputFunction = (element) => {
+  //   let x = element.value;
+  //   document.getElementById("text").innerHTML = x;
+  // };
+
+  //
+
+  // const changeFunction = (element) => {
+  //   let x = element.value;
+  //   document.getElementById("text").innerHTML = x;
+  // };
+
+  //
+</script>

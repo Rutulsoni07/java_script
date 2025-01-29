@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form id="user">
+      <label for="">Name:-</label>
+      <input type="text" name="name" id="name" required />
+      <br /><br />
+      <label for="">Email:-</label>
+      <input type="email" name="email" id="email" required />
+      <br /><br />
+      <label for="">Password:-</label>
+      <input type="password" name="password" id="password" required />
+      <br /><br />
+      <label for="">Comment:-</label>
+      <textarea name="comment" id="comment"></textarea>
+      <br /><br />
+      <label for="">Gender:-</label>
+      <input type="radio" id="male" name="gender" value="Male" required />
+      <label for="male">Male</label>
+
+      <input type="radio" id="female" name="gender" value="Female" required />
+      <label for="female">Female</label>
+
+      <input type="radio" id="other" name="gender" value="other" required />
+      <label for="other">Other</label>
+      <br /><br />
+      <input type="checkbox" id="newsletter" name="mewsletter" />
+      <label for="newsletter">Subscribe to newsletter</label>
+      <br /><br />
+      <select name="role" id="role">
+        <option value="">select</option>
+        <option value="Admin">Admin</option>
+        <option value="Editor">Editor</option>
+        <option value="Viewer">Viewer</option>
+      </select>
+      <br />
+      <br />
+      <button type="submit">Submit</button>
+    </form>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Sr no</th>
+          <th>Name</th>
+          <th>Password</th>
+          <th>Email</th>
+          <th>Comment</th>
+          <th>gender</th>
+          <th>newsletter</th>
+          <th>role</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="tableData"></tbody>
+    </table>
+  </body>
+</html>
+<script>
+  // document.getElementById("user").addEventListener("submit", (e) => {
+  //   e.preventDefault();
+  //   let name = document.getElementById("name").value;
+  //   let password = document.getElementById("password").value;
+  //   let email = document.getElementById("email").value;
+  //   let comment = document.getElementById("comment").value;
+  //   let gender = document.querySelector('input[name="gender"]:checked')?.value;
+  //   let newsletter = document.getElementById("newsletter").checked;
+  //   let role = document.getElementById("role").value;
+
+  //   let obj = {
+  //     name,
+  //     password,
+  //     email,
+  //     comment,
+  //     gender,
+  //     newsletter,
+  //     role,
+  //   };
+
+  //   let arr = JSON.parse(localStorage.getItem("data")) || [];
+  //   arr.push(obj);
+  //   localStorage.setItem("data", JSON.stringify(arr));
+  //   updateTable();
+  //   e.target.reset();
+  // });
+  // let a = JSON.parse(localStorage.getItem("data"));
+  // console.log(a);
+
+  // const updateTable = () => {
+  //   let data = JSON.parse(localStorage.getItem("data"));
+
+  //   let dataTable = document.getElementById("tabledata");
+  //   let tr = "";
+  //   data.map((e, i) => {
+  //     tr += `<tr>
+  //      <td>${index + 1}</td>
+  //      <td>${e.name}</td>
+  //      <td>${e.password}</td>
+  //      <td>${e.email}</td>
+  //      <td>${e.comment}</td>
+  //      <td>${e.gender}</td>
+  //      <td>${e.newsletter}</td>
+  //      <td>${e.role}</td>
+  //      <td><button>Edit</button><button>Delete</button></td>
+  //   </tr>`;
+  //   });
+  //   tabledata.innerHTML = tr;
+  // };
+  // updateTable();
+
+  +document.getElementById("user").addEventListener("submit", (e) => {
+    e.preventDefault();
+    let name = document.getElementById("name").value;
+    let password = document.getElementById("password").value;
+    let email = document.getElementById("email").value;
+    let comment = document.getElementById("comment").value;
+    let gender = document.querySelector('input[name="gender"]:checked')?.value;
+    let newsletter = document.getElementById("newsletter").checked;
+    let role = document.getElementById("role").value;
+
+    let obj = {
+      name,
+      password,
+      email,
+      comment,
+      gender,
+      newsletter,
+      role,
+    };
+
+    let arr = JSON.parse(localStorage.getItem("data")) || [];
+    arr.push(obj);
+    localStorage.setItem("data", JSON.stringify(arr));
+    updateTable();
+    e.target.reset();
+  });
+
+  const updateTable = () => {
+    let data = JSON.parse(localStorage.getItem("data")) || [];
+
+    let tableData = document.getElementById("tableData");
+    let tr = "";
+    data.map((e, i) => {
+      tr += `<tr>
+       <td>${i + 1}</td>
+       <td>${e.name}</td>
+       <td>${e.password}</td>
+       <td>${e.email}</td>
+       <td>${e.comment}</td>
+       <td>${e.gender}</td>
+       <td>${e.newsletter ? "Yes" : "No"}</td>
+       <td>${e.role}</td>
+       <td>
+         <button onclick="editRow(${i})">Edit</button>
+         <button onclick="deleteRow(${i})">Delete</button>
+       </td>
+      </tr>`;
+    });
+    tableData.innerHTML = tr;
+  };
+
+  const deleteRow = (index) => {
+    let data = JSON.parse(localStorage.getItem("data")) || [];
+    data.splice(index, 1); // Remove the selected row
+    localStorage.setItem("data", JSON.stringify(data));
+    updateTable();
+  };
+
+  const editRow = (index) => {
+    let data = JSON.parse(localStorage.getItem("data")) || [];
+    let item = data[index];
+    // Populate form with the current data
+    document.getElementById("name").value = item.name;
+    document.getElementById("password").value = item.password;
+    document.getElementById("email").value = item.email;
+    document.getElementById("comment").value = item.comment;
+    document.querySelector(
+      `input[name="gender"][value="${item.gender}"]`
+    ).checked = true;
+    document.getElementById("newsletter").checked = item.newsletter;
+    document.getElementById("role").value = item.role;
+
+    // Remove the item and update localStorage
+    data.splice(index, 1);
+    localStorage.setItem("data", JSON.stringify(data));
+    updateTable();
+  };
+
+  // Initialize table on page load
+  updateTable();
+</script>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form id="form">
+      <input type="text" placeholder="Enter name" id="name" /> <br /><br />
+      <input type="file" id="file" /> <br /><br />
+      <button id="btn">Submit</button>
+    </form>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Sr no</th>
+          <th>Name</th>
+          <th>Image</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+  </body>
+</html>
+<script>
+  let currentindex = null;
+  document.getElementById("form").addEventListener("submit", (event) => {
+    event.preventDefault();
+    let fileInput = document.getElementById("file");
+    let file = fileInput.files[0];
+
+    if (file) {
+      const reader = new FileReader();
+
+      reader.onloadend = () => {
+        let obj = {
+          name: document.getElementById("name").value,
+          image: reader.result,
+        };
+        let arr = JSON.parse(localStorage.getItem("data")) || [];
+
+        if (currentindex !== null) {
+          arr[currentindex] = obj;
+          currentindex = null;
+          document.getElementById("btn").innerHTML = "Submit";
+        } else {
+          arr.push(obj);
+        }
+        localStorage.setItem("data", JSON.stringify(arr));
+        updateTable();
+        event.target.reset();
+      };
+      reader.readAsDataURL(file);
+    } else {
+      alert("select a file!");
+    }
+  });
+  //
+  const updateTable = () => {
+    let data = JSON.parse(localStorage.getItem("data")) || [];
+    let datatable = document.getElementById("tbody");
+    let tr = "";
+    data.map((ele, index) => {
+      tr += `
+  <tr>
+    <td>${index + 1}</td>
+    <td>${ele.name}</td>
+    <td><img src="${ele.image}" width="20%" height= "10px"></td>
+    <td><button onclick="handleEdit(${index})">Edit</button><button onclick="handleDelete(${index})">Delete</button></td>
+    </tr>`;
+    });
+    datatable.innerHTML = tr;
+  };
+
+  const handleDelete = (index) => {
+    let data = JSON.parse(localStorage.getItem("data")) || [];
+    data.splice(index, 1);
+    localStorage.setItem("data", JSON.stringify(data));
+    updateTable();
+  };
+
+  const handleEdit = (index) => {
+    let data = JSON.parse(localStorage.getItem("data")) || [];
+    document.getElementById("name").value = data[index].name;
+    document.getElementById("file").value = "";
+    currentindex = index;
+    document.getElementById("btn").innerHTML = "Update";
+    updateTable();
+  };
+</script>

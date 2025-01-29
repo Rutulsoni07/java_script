@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .para1 {
+      background-color: navajowhite;
+      color: darkturquoise;
+    }
+  </style>
+  <body>
+    <p id="para">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus, vero!
+    </p>
+    <button id="start">start</button>
+    <button id="end">end</button>
+  </body>
+</html>
+<script>
+  document.getElementById("start").addEventListener("click", () => {
+    document.getElementById("para").setAttribute("class", "para1");
+  });
+
+  document.getElementById("end").addEventListener("click", () => {
+    document.getElementById("para").removeAttribute("class");
+  });
+</script>

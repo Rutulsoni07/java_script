@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- <p>Date of CoronaCase: <span id="date"></span></p>
+    <p>Total samples Tested: <span id="sample"></span></p>
+    <p>Total positive Cases: <span id="Pcase"></span></p> -->
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Day</th>
+          <th>Sampled Tested</th>
+          <th>Positive Cases</th>
+        </tr>
+      </thead>
+      <tbody id="tablebody"></tbody>
+    </table>
+  </body>
+</html>
+<script>
+  fetch("https://api.rootnet.in/covid19-in/stats/testing/history")
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data.data);
+      let tr = "";
+      for (let x of data.data) {
+        tr += `
+        <tr>
+          <td>${x.day}</td>
+          <td>${x.totalSamplesTested}</td>
+          <td>${x.totalPositiveCases}</td>
+          <td><img src = "Press_Release_ICMR_13March2020.pdf"></td>
+          </tr>
+        `;
+      }
+      document.getElementById("tablebody").innerHTML = tr;
+    })
+    .catch((err) => console.log(err));
+</script>

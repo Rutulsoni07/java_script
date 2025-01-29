@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form id="form">
+      <input type="text" placeholder="Enter name" id="name" required />
+      <input type="password" placeholder="Password" id="password" required />
+      <button type="submit">submit</button>
+    </form>
+    <button id="clear">clear</button>
+  </body>
+</html>
+<script>
+  //onsubmit:-
+  document.getElementById("form").addEventListener("submit", (e) => {
+    e.preventDefault(); //for not refreshing page
+    let name1 = document.getElementById("name").value;
+    let password1 = document.getElementById("password").value;
+
+    if (name1.length >= 2 && password1.length >= 8) {
+      console.log(`Name: ${name1}`);
+      console.log(`Password: ${password1}`);
+    } else {
+      alert("Enter valid username and password");
+    }
+    e.target.reset(); //in form data will reset
+  });
+
+  //LOCAL STORAGE-5MB STORAGE AND NOT DELETED DATA IN COMPUTER UNTIL AND UNLESS WE DO
+  //setItem:- syntax- localStorage.setItem("key", JSON.stringify(value)) to print into localstorage
+  // getItem:- to get into console,
+  // removeItem:- remove from the local storage
+
+  // JSON - javascript object notation
+  // JSONstringify
+  // JSON.parse
+  // key,value
+  // JSON.stringify(value) use for convert into string
+
+  let name = [
+    {
+      name: "xyz",
+      city: "abc",
+      occupation: "xyz",
+    },
+    {
+      name: "xyz",
+      city: "abc",
+      occupation: "xyz",
+    },
+  ];
+  //
+
+  localStorage.setItem("data", JSON.stringify(name));
+  let a = JSON.parse(localStorage.getItem("data"));
+  console.log(a);
+
+  //   clear btn used for clear all the data from the localstorage
+  document.getElementById("clear").addEventListener("click", () => {
+    localStorage.removeItem("data");
+  });
+
+  // 2nd example:-
+
+  let b = [1, 2, 3, 4, 5, 6];
+  localStorage.setItem("data1", JSON.stringify(b));
+  let c = JSON.parse(localStorage.getItem("data1"));
+  console.log(c);
+  document.getElementById("clear").addEventListener("click", () => {
+    localStorage.removeItem("data1");
+  });
+  // sessionstorage- temporary
+</script>

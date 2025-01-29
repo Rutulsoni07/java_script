@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .user {
+      /* margin-top: 20px; */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      font-family: Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .img img {
+      border-radius: 50%;
+    }
+  </style>
+  <body>
+    <div class="user">
+      <div class="img">
+        <img src="" id="user_img" alt="" />
+      </div>
+      <p>
+        Name: <span id="title"></span> <span id="first"> </span>
+        <span id="last"></span>
+      </p>
+      <p>Email: <span id="email"></span></p>
+      <p>Username: <span id="username"></span></p>
+      <p>Password: <span id="password"></span></p>
+      <p>Gender: <span id="gender"></span></p>
+      <p>Age: <span id="dob"></span></p>
+      <p>Location: <span id="number"></span> <span id="name"></span></p>
+      <p>City: <span id="city"></span></p>
+      <p>Postcode: <span id="postcode"></span></p>
+      <p>State: <span id="state"></span></p>
+      <p>Country: <span id="country"></span></p>
+      <p>Timezome: <span id="time"></span> <span id="description"></span></p>
+    </div>
+  </body>
+</html>
+<script>
+  fetch("https://randomuser.me/api/")
+    .then((res) => res.json())
+    .then((data) => {
+      //   console.log(data.results[0]);
+      document.getElementById("user_img").src = data.results[0].picture.large;
+      document.getElementById("title").innerHTML = data.results[0].name.title;
+      document.getElementById("first").innerHTML = data.results[0].name.first;
+      document.getElementById("last").innerHTML = data.results[0].name.last;
+      document.getElementById("email").innerHTML = data.results[0].email;
+      document.getElementById("username").innerHTML =
+        data.results[0].login.username;
+      document.getElementById("password").innerHTML =
+        data.results[0].login.password;
+      document.getElementById("gender").innerHTML = data.results[0].gender;
+      document.getElementById("dob").innerHTML = data.results[0].dob.age;
+      document.getElementById("number").innerHTML =
+        data.results[0].location.street.number;
+      document.getElementById("name").innerHTML =
+        data.results[0].location.street.name;
+      document.getElementById("city").innerHTML = data.results[0].location.city;
+      document.getElementById("postcode").innerHTML =
+        data.results[0].location.postcode;
+      document.getElementById("state").innerHTML =
+        data.results[0].location.state;
+      document.getElementById("country").innerHTML =
+        data.results[0].location.country;
+      document.getElementById("time").innerHTML =
+        data.results[0].location.timezone.offset;
+      document.getElementById("description").innerHTML =
+        data.results[0].location.timezone.description;
+    })
+    .catch((err) => console.log(err));
+</script>

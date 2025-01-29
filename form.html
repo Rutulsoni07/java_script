@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>form</title>
+    <style>
+      body {
+        background: #488;
+        text-align: center;
+        margin-top: 200px;
+      }
+    </style>
+ <body id="body">
+  <!-- <form action="">
+  <fieldset id="fs">
+  <legend id="legend">data</legend>
+  <br><br><br>
+  
+  </fieldset>
+  </form> -->
+ </body>
+</html>
+<script>
+  let form = document.createElement("form");
+  console.log(form);
+  document.getElementById("body").appendChild(form);
+  
+  
+  
+  let fieldset = document.createElement("fieldset")
+  console.log(fieldset)
+  form.appendChild(fieldset)
+  
+  
+  let inputname = document.createElement("input");
+  inputname.type = "text";
+  inputname.placeholder = "Enter name";
+  console.log(inputname);
+  fieldset.appendChild(inputname);
+  
+  
+  let br = document.createElement("br");
+  console.log(br);
+  fieldset.appendChild(br);
+  
+  let br1 = document.createElement("br");
+  console.log(br1);
+  fieldset.appendChild(br1);
+  
+  let inputEmail = document.createElement("input");
+  inputEmail.type = "Email";
+  inputEmail.placeholder = "Enter Email";
+  console.log(inputEmail);
+  fieldset.appendChild(inputEmail);
+  
+  let br3 = document.createElement("br");
+  console.log(br3);
+  fieldset.appendChild(br3);
+  
+  let br4 = document.createElement("br");
+  console.log(br4);
+  fieldset.appendChild(br4);
+  
+  let inputPassword = document.createElement("input");
+  inputPassword.type = "password";
+  inputPassword.placeholder = "Enter Password";
+  console.log(inputPassword);
+  fieldset.appendChild(inputPassword);
+  
+  let br5 = document.createElement("br");
+  console.log(br5);
+  fieldset.appendChild(br5);
+  
+  let br6 = document.createElement("br");
+  console.log(br6);
+  fieldset.appendChild(br6);
+  
+  let inputPassword1 = document.createElement("input");
+  inputPassword1.type = "password";
+  inputPassword1.placeholder = "Confirm Password";
+  console.log(inputPassword1);
+  fieldset.appendChild(inputPassword1);
+  
+  let br7 = document.createElement("br");
+  console.log(br7);
+  fieldset.appendChild(br7);
+  
+  let br8 = document.createElement("br");
+  console.log(br8);
+  fieldset.appendChild(br8);
+  
+  let button = document.createElement("button");
+  console.log(button);
+  button.innerText = "Submit";
+  fieldset.appendChild(button);
+  
+  
+  
+  
+</script>
